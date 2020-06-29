@@ -43,6 +43,10 @@ public class Sentence2AgentEnvironment extends RootEnvironment {
 		});
 
 	}
+	
+	public SentenceProcessor getSentenceProcessor() {
+		return processor;
+	}
 
 	public LinkGrammarClientEnvironment getLGEnvironment() {
 		return lgEnvironment;

@@ -3,11 +3,20 @@
  */
 package org.topicquests.os.asr;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.topicquests.backside.kafka.consumer.api.IMessageConsumerListener;
 import org.topicquests.ks.kafka.KafkaHandler;
 import org.topicquests.ks.kafka.KafkaProducer;
+import org.topicquests.os.asr.linkgrammar.LinkGrammarAgent;
 import org.topicquests.os.asr.linkgrammar.interpreter.LinkGrammarInterpreter;
+import org.topicquests.support.api.IResult;
+
+import net.minidev.json.JSONObject;
+import net.minidev.json.parser.JSONParser;
 
 /**
  * @author jackpark
@@ -15,7 +24,7 @@ import org.topicquests.os.asr.linkgrammar.interpreter.LinkGrammarInterpreter;
  */
 public class SentenceProcessor implements IMessageConsumerListener {
 	private Sentence2AgentEnvironment environment;
-	private LinkGrammarInterpreter interpreter;
+	private LinkGrammarAgent agent;
 	private KafkaHandler handler;
 
 	/**
@@ -23,7 +32,7 @@ public class SentenceProcessor implements IMessageConsumerListener {
 	 */
 	public SentenceProcessor(Sentence2AgentEnvironment env) {
 		environment =  env;
-		interpreter = environment.getLGEnvironment().getInterpreter();
+		agent = environment.getLGEnvironment().getAgent();
 
 	}
 	
@@ -40,8 +49,47 @@ public class SentenceProcessor implements IMessageConsumerListener {
 	 */
 	@Override
 	public boolean acceptRecord(ConsumerRecord record) {
-		// TODO Auto-generated method stub
-		return false;
+		String json = (String)record.value();
+		environment.logDebug("SentenceProcessor.acceptRecord "+json);
+		boolean result = processRecord(json);
+
+		return result;	
+	}
+	
+	/**
+	 * Public for testing
+	 * @param json
+	 * @return
+	 */
+	public boolean processRecord(String json) {
+		boolean result = true; // default
+		try {
+			JSONParser p = new JSONParser(JSONParser.MODE_JSON_SIMPLE);
+			JSONObject spacyParagraph = (JSONObject)p.parse(json);
+			List<JSONObject> sentenceObjects = (List<JSONObject>)spacyParagraph.get("sentenceObjects");
+			if (sentenceObjects != null && !sentenceObjects.isEmpty()) {
+				List<JSONObject> resultObjects = new ArrayList<JSONObject>();
+				JSONObject sentenceObject;
+				Iterator<JSONObject> itr = sentenceObjects.iterator();
+				while (itr.hasNext()) {
+					//For each sentenceObject, pluck sentence, run LinkGrammar, merge
+					sentenceObject = itr.next();
+					processSentenceObject(sentenceObject, resultObjects);
+				}
+			}
+			
+		} catch (Exception e) {
+			environment.logError(e.getMessage(), e);
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	private void processSentenceObject(JSONObject sentenceObject, List<JSONObject> resultObjects) {
+		String theSentence = sentenceObject.getAsString("text");
+		environment.logDebug("SentenceProcessor.processSentenceObject-1 "+theSentence);
+		IResult r = agent.processSentence(theSentence);
+		environment.logDebug(r.getErrorString()+"/n"+r.getResultObject());
 	}
 
 }

@@ -4,6 +4,8 @@
 package devtests;
 
 import org.topicquests.os.asr.Sentence2AgentEnvironment;
+import org.topicquests.os.asr.SentenceProcessor;
+import org.topicquests.os.asr.linkgrammar.LinkGrammarAgent;
 import org.topicquests.os.asr.linkgrammar.interpreter.LinkGrammarInterpreter;
 
 /**
@@ -12,14 +14,16 @@ import org.topicquests.os.asr.linkgrammar.interpreter.LinkGrammarInterpreter;
  */
 public class TestRoot {
 	protected Sentence2AgentEnvironment environment;
-	protected LinkGrammarInterpreter interpreter;
+	protected LinkGrammarAgent agent;
+	protected SentenceProcessor processor;
 
 	/**
 	 * 
 	 */
 	public TestRoot() {
 		environment = new Sentence2AgentEnvironment();
-		interpreter = environment.getLGEnvironment().getInterpreter();
+		agent = environment.getLGEnvironment().getAgent();
+		processor = environment.getSentenceProcessor();
 
 	}
 

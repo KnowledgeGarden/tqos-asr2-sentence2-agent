@@ -10,6 +10,8 @@
 -->
 
 <properties>
+	<!-- coordinate with config-props.xml -->
+	<parameter name="ConsumerRewind" value="T" />  <!--  ??? CHANGEME -->
 
 	<parameter name="VocabServerURl" value="localhost" /> <!--  coordinate with VocabServer -->
 	<parameter name="VocabServerPort" value="7989" /> <!-- coordinate with VocabServer -->

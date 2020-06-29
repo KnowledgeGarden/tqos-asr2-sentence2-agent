@@ -1,0 +1,206 @@
+2020-06-29 13:13:13 INFO  ConsumerConfig:347 - ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 1000
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = default
+	client.id = 
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = foo
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 1
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 25000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2020-06-29 13:13:13 DEBUG KafkaConsumer:699 - [Consumer clientId=consumer-foo-1, groupId=foo] Initializing the Kafka consumer
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name fetch-throttle-time
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name connections-closed:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name connections-created:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name successful-authentication:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name successful-reauthentication:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name successful-authentication-no-reauth:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name failed-authentication:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name failed-reauthentication:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name reauthentication-latency:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name bytes-sent-received:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name bytes-sent:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name bytes-received:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name select-time:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name io-time:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name heartbeat-latency
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name join-latency
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name sync-latency
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name rebalance-latency
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name failed-rebalance
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name commit-latency
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name partition-revoked-latency
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name partition-assigned-latency
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name partition-lost-latency
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name bytes-fetched
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name records-fetched
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name fetch-latency
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name records-lag
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name records-lead
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name time-between-poll
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name poll-idle-ratio-avg
+2020-06-29 13:13:13 INFO  AppInfoParser:117 - Kafka version: 2.4.0
+2020-06-29 13:13:13 INFO  AppInfoParser:118 - Kafka commitId: 77a89fcf8d7fa018
+2020-06-29 13:13:13 INFO  AppInfoParser:119 - Kafka startTimeMs: 1593461593406
+2020-06-29 13:13:13 DEBUG KafkaConsumer:815 - [Consumer clientId=consumer-foo-1, groupId=foo] Kafka consumer initialized
+2020-06-29 13:13:13 INFO  KafkaConsumer:969 - [Consumer clientId=consumer-foo-1, groupId=foo] Subscribed to topic(s): spacy
+2020-06-29 13:13:13 DEBUG AbstractCoordinator:727 - [Consumer clientId=consumer-foo-1, groupId=foo] Sending FindCoordinator request to broker localhost:9092 (id: -1 rack: null)
+2020-06-29 13:13:13 DEBUG LoggingPlatform:46 - MessageProducer-
+2020-06-29 13:13:13 INFO  ProducerConfig:347 - ProducerConfig values: 
+	acks = all
+	batch.size = 16384
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.dns.lookup = default
+	client.id = foo
+	compression.type = gzip
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 0
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name bufferpool-wait-time
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name buffer-exhausted-records
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name errors
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name produce-throttle-time
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name connections-closed:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name connections-created:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name successful-authentication:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name successful-reauthentication:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name successful-authentication-no-reauth:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name failed-authentication:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name failed-reauthentication:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name reauthentication-latency:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name bytes-sent-received:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name bytes-sent:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name bytes-received:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name select-time:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name io-time:
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name batch-size
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name compression-rate
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name queue-time
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name request-time
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name records-per-request
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name record-retries
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name record-size
+2020-06-29 13:13:13 DEBUG Metrics:416 - Added sensor with name batch-split-rate
+2020-06-29 13:13:13 INFO  AppInfoParser:117 - Kafka version: 2.4.0
+2020-06-29 13:13:13 DEBUG Sender:239 - [Producer clientId=foo] Starting Kafka producer I/O thread.
+2020-06-29 13:13:13 INFO  AppInfoParser:118 - Kafka commitId: 77a89fcf8d7fa018
+2020-06-29 13:13:13 INFO  AppInfoParser:119 - Kafka startTimeMs: 1593461593673
+2020-06-29 13:13:13 DEBUG KafkaProducer:427 - [Producer clientId=foo] Kafka producer started
+2020-06-29 13:13:13 DEBUG LoggingPlatform:46 - MessageProducer+

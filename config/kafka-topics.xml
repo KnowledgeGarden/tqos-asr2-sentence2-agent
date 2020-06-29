@@ -76,5 +76,9 @@
 		contains a sentence to be read in Phase 2
 	 -->
 	<parameter name="Phase2SentenceVerb" value="Phase2Sentence" />
+	
+	<!-- spacy and sentence-related -->
+	<parameter name="SpacyOutput" value="spacy" />
+	<parameter name="SentenceOutput" value="sentence" />
 	 
 </properties>

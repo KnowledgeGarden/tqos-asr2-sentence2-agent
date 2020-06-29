@@ -5,6 +5,7 @@ package org.topicquests.os.asr;
 
 import java.util.Map;
 
+import org.topicquests.ks.kafka.KafkaHandler;
 import org.topicquests.os.asr.linkgrammar.LinkGrammarClientEnvironment;
 import org.topicquests.support.RootEnvironment;
 import org.topicquests.support.config.Configurator;
@@ -16,6 +17,8 @@ import org.topicquests.support.config.Configurator;
 public class Sentence2AgentEnvironment extends RootEnvironment {
 	private LinkGrammarClientEnvironment lgEnvironment;
 	private Map<String,Object>kafkaProps;
+	private SentenceProcessor processor;
+	private KafkaHandler consumer;
 	private boolean isShutDown = false;
 
 	/**
@@ -25,6 +28,9 @@ public class Sentence2AgentEnvironment extends RootEnvironment {
 		super("asr-props.xml", "logger.properties");
 		lgEnvironment = new LinkGrammarClientEnvironment();
 		kafkaProps = Configurator.getProperties("kafka-topics.xml");
+		processor = new SentenceProcessor(this);
+		consumer = new KafkaHandler(this, processor);
+		processor.setKafkaHandler(consumer);
 		isShutDown = false;
 
 		

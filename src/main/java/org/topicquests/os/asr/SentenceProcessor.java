@@ -6,6 +6,7 @@ package org.topicquests.os.asr;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.topicquests.backside.kafka.consumer.api.IMessageConsumerListener;
@@ -13,6 +14,7 @@ import org.topicquests.ks.kafka.KafkaHandler;
 import org.topicquests.ks.kafka.KafkaProducer;
 import org.topicquests.os.asr.linkgrammar.LinkGrammarAgent;
 import org.topicquests.os.asr.linkgrammar.interpreter.LinkGrammarInterpreter;
+import org.topicquests.os.asr.sg.api.ISGAgent;
 import org.topicquests.support.api.IResult;
 
 import net.minidev.json.JSONObject;
@@ -26,6 +28,8 @@ public class SentenceProcessor implements IMessageConsumerListener {
 	private Sentence2AgentEnvironment environment;
 	private LinkGrammarAgent agent;
 	private KafkaHandler handler;
+	private ISGAgent sgAgent;
+
 
 	/**
 	 * 
@@ -33,6 +37,7 @@ public class SentenceProcessor implements IMessageConsumerListener {
 	public SentenceProcessor(Sentence2AgentEnvironment env) {
 		environment =  env;
 		agent = environment.getLGEnvironment().getAgent();
+		sgAgent = environment.getSgAgent();
 
 	}
 	
@@ -85,11 +90,29 @@ public class SentenceProcessor implements IMessageConsumerListener {
 		return result;
 	}
 	
+	/**
+	 * 
+	 * @param sentenceObject
+	 * @param resultObjects
+	 */
 	private void processSentenceObject(JSONObject sentenceObject, List<JSONObject> resultObjects) {
 		String theSentence = sentenceObject.getAsString("text");
-		environment.logDebug("SentenceProcessor.processSentenceObject-1 "+theSentence);
+		//Create sentenceId
+		String id = UUID.randomUUID().toString();
+		sentenceObject.put("sentenceID", id);
+		environment.logDebug("SentenceProcessor.processSentenceObject-1 "+id+" "+theSentence);
+		//send out to turn into WordGrams
+		sgAgent.acceptSentence(id, theSentence);
+		//in parallel, parse this sentence
 		IResult r = agent.processSentence(theSentence);
 		environment.logDebug(r.getErrorString()+"/n"+r.getResultObject());
+		//TODO
+		//agent must return a JSONObject
+		//we must add SentenceId to that, then add to resultObject
+		JSONObject ro = (JSONObject)r.getResultObject();
+		ro.put("sentenceID", id);
+		sentenceObject.put("linkGrammar", ro);
+		resultObjects.add(sentenceObject);
 	}
 
 }

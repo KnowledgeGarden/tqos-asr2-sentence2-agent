@@ -8,6 +8,7 @@ import java.util.Map;
 import org.topicquests.ks.kafka.KafkaHandler;
 import org.topicquests.os.asr.linkgrammar.LinkGrammarClientEnvironment;
 import org.topicquests.os.asr.sg.SGEnvironment;
+import org.topicquests.os.asr.sg.api.ISGAgent;
 import org.topicquests.support.RootEnvironment;
 import org.topicquests.support.config.Configurator;
 
@@ -18,6 +19,8 @@ import org.topicquests.support.config.Configurator;
 public class Sentence2AgentEnvironment extends RootEnvironment {
 	private LinkGrammarClientEnvironment lgEnvironment;
 	private SGEnvironment sgEnvironment;
+	private ISGAgent agent;
+
 
 	private Map<String,Object>kafkaProps;
 	private SentenceProcessor processor;
@@ -47,6 +50,11 @@ public class Sentence2AgentEnvironment extends RootEnvironment {
 		});
 
 	}
+	
+	public ISGAgent getSgAgent() {
+		return sgEnvironment.getAgent();
+	}
+
 	
 	public SentenceProcessor getSentenceProcessor() {
 		return processor;
